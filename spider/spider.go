@@ -87,7 +87,6 @@ func downloadAllImages(url string, path string) {
 			fmt.Println(err)
 			return
 		}
-		fmt.Println("no exist")
 	}
 	os.MkdirAll(dirPATH, os.ModePerm)
 	/* 匹配图片 */
@@ -101,6 +100,9 @@ func downloadAllImages(url string, path string) {
 		src := getSrc(name)
 		time.Sleep(time.Second)
 		Download_img(src, dirPATH, i, url)
+	}
+	if i == 0 {
+		os.Remove(dirPATH)
 	}
 }
 func SpiderImage(rootURL string, i int, dirRoot string, web string) {
